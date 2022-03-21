@@ -27,7 +27,7 @@
   The goal of the code is to learn how to make an app that is capable of processing, editing, and displaying the uploaded and edited image.
  
   Known Issues:
-  Original image is displayed on the first canvas
+  None
 -->
 
  <head>
@@ -102,6 +102,7 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
          
+          // The code below identifies the canvas 'dataCanvas' and the image data
           var canvas2 = document.getElementById('dataCanvas');
           var context2 = canvas2.getContext('2d');
           var imageData = context.getImageData(0, 0, 600, 500);
@@ -110,11 +111,13 @@
           // iterates over all pixels
           for(var q = 0; q < data.length; q += 4) {
           	data[q] = 0; // sets the red values to 0
-            data[q + 1] = 0; // sets the green values to 0
+           data[q + 1] = 0; // sets the green values to 0
           }
           
-          context2.putImageData(imageData, 0, 0)
-          
+          context2.putImageData(imageData, 0, 0) 
+         
+          // This draws the altered image data on the second canvas
+         
           var imageAltered = img;
           imageObj.onload = function() {
           	drawImage(this);
@@ -160,13 +163,14 @@
         context.fillText("Original image will go here", 10, 20);
       </script>
 
+      // This creates the second canvas to display the altered image
       <canvas id="dataCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the canvas and puts the text on the canvas "dataCanvas" */
         var canvas2 = document.getElementById('dataCanvas');
         var context2 = canvas2.getContext("2d");
         context2.font = '20pt Calibri';
         context2.fillStyle = "black";
-        context2.fillText("Altered image with only blue color will go here", 10, 20);
+        context2.fillText("Altered image with only blue color will go here", 10, 20); // Lines 171-173 add the default text to the second canvas
       </script>
      
     </div><!-- /content -->
