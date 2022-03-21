@@ -101,9 +101,26 @@
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
+         
+          var canvas2 = document.getElementById('dataCanvas');
+          var context2 = canvas2.getContext('2d');
+          var imageData = context.getImageData(0, 0, 600, 500);
+          var data = imageData.data;
           
+          // iterates over all pixels
+          for(var q = 0; q < data.length; q += 4) {
+          	data[q] = 0; // sets the red values to 0
+            data[q + 1] = 0; // sets the green values to 0
+          }
           
+          context2.putImageData(imageData, 0, 0)
           
+          var imageAltered = img;
+          imageObj.onload = function() {
+          	drawImage(this);
+          } 
+          
+         /* END OF CHANGES TO THE JAVASCRIPT */
           
         } // end of img.onload
         
